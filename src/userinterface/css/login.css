@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body {
+    background-image: url('../images/leafEdit.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+.card {
+    height: 370px;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: #d7beaf !important;
+}
+
+.card-header h3 {
+    color: white;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #6D5B7E;
+    color: black;
+    border:0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn {
+    color: white;
+    background-color: #6D5B7E;
+    width: 100px;
+}
+
+.login_btn:hover {
+    color: #6D5B7E;
+    background-color: white;
+}
+
+.links {
+    color: white;
+}
+
+.links a {
+    margin-left: 4px;
+    color: #75B29C;
+}
+
+.welcome-header {
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding-top: 96px;
+    margin-bottom: 0em;
+}
+.welcome-header h1 {
+    font-size: 160px;
+}

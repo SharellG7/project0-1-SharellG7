@@ -47,8 +47,13 @@ export async function findById (userId: number) {
     let client: PoolClient;
     try {
         client = await connectionPool.connect();
-        const result = await client.query('SELECT * FROM app_user WHERE user_id = $1', [userId]);
+        const result = await client.query(`
+        SELECT au.*, ur.role_type  
+            FROM app_user AS au
+            LEFT JOIN user_role AS ur
+            ON au.role_id = ur.role_id WHERE user_id = $1`, [userId]);
         const sqlUser = result.rows[0];
+        //console.log(sqlUser);
         return sqlUser && convertSqlUser(sqlUser);
     } catch (err) {
         console.log(err);

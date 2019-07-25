@@ -5,7 +5,9 @@ import { authRouter } from './src/routers/auth.router';
 import { sessionMiddleware } from './src/middleware/session.middleware';
 import { reimbursementRouter } from './src/routers/reimbursement.router';
 
-// specify the port will run on
+/**
+ * specify the port will run on
+ */
 const port = 8012;
 const app = express();
 
@@ -19,7 +21,9 @@ app.use((req, res, next) => {
     next(); // pass request on to search for the next piece of middleware
 });
 
-// set up body parser to convert json body to object stored on req.body
+/**
+ * set up body parser to convert json body to object stored on req.body
+ */
 app.use(bodyParser.json());
 
 
@@ -28,6 +32,18 @@ app.use(bodyParser.json());
  */
 app.use(sessionMiddleware);
 
+/**
+ * allow cross origins
+ */
+app.use((req, resp, next) => {
+    console.log(req.get('host'));
+    resp.header('Access-Control-Allow-Origin', `${req.headers.origin}`);
+    resp.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    resp.header('Access-Control-Allow-Credentials', 'true');
+    resp.header('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, PATCH');
+    next();
+});
+
 /*******************************************
  * Register Routers
  ******************************************/
@@ -35,15 +51,6 @@ app.use(authRouter);
 app.use('/users', usersRouter);
 app.use('/reimbursement', reimbursementRouter);
 
-// allow cross origins
-// app.use((req, resp, next) => {
-//     console.log(req.get('host'));
-//     resp.header('Access-Control-Allow-Origin', `${req.headers.origin}`);
-//     resp.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-//     resp.header('Access-Control-Allow-Credentials', 'true');
-//     resp.header('Access-Control-Allow-Methods', 'POST, GET, DELETE, PUT, PATCH');
-//     next();
-// });
 
 
 app.listen(port, () => {

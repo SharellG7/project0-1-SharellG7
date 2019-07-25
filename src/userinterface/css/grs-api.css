@@ -1,0 +1,27 @@
+h1, p {
+    color: white;
+}
+
+
+#app-nav {
+    background-color: #a5a5a5;
+    color: white;
+    width: 100%;
+}
+
+
+
+
+
+.btn {
+    margin-left: .65em
+}
+
+.container {
+    background-color: #4e4242;
+}
+
+.profile-container {
+    width: 100%;
+    padding: 5em;
+}
