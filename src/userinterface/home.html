@@ -15,28 +15,19 @@
 <body class="container">
     <nav id="app-nav"></nav>
 
-    <div class="profile-container">
-        <h1>View Users</h1>
-        <input type="number" id="inputId" />
-        <button class="btn btn-light" onclick="getMemberById(event)">Find</button>
-        <button class="btn btn-light" onclick="getAllMembers(event)">Find All</button>
-        <!-- <p id="userInfo"></p> -->
-        <div class="wrapper">
-            <table class="view-table">
-                <thead class="view-table-header">
-                    <tr>
-                        <th></th>
-                        <th>Username</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                    </tr>
-                </thead>
-                <tbody class="view-table-body" id="tbody"></tbody>
-            </table>
+    <div class="row">
+        <div class="col-lg-9 block">
+            <div class="content-wrapper align-left">
+                <div class="content">
+                    <h1 class="mbr-section-subtitle mbr-regular mbr-black pb-2 mbr-fonts-style display-5">Reimbursement System</h1>
+                    <h2 class="mbr-section-title mbr-semibold mbr-black pb-4 mbr-fonts-style display-1">Psi Purple Phi</h2>
+                    <p class="mbr-text mbr-white mbr-regular mbr-black mbr-fonts-style display-5">test</p>
+                    <div class="mbr-section-btn pt-3">
+                        <a class="btn btn-lg btn-black-outline display-4" href="#">View Upcoming Events</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 
 </body>
@@ -54,4 +45,4 @@
 
 <script src="./navbar/navbar.js"></script>
 <script src="./profile.js"></script>
-</html> 
+</html>

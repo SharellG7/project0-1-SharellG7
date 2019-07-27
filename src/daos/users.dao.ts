@@ -9,7 +9,7 @@ export async function findAll(){
     let client: PoolClient;
     try {
         client = await connectionPool.connect();
-        const result = await client.query('SELECT * FROM app_user');
+        const result = await client.query('SELECT * FROM app_user JOIN user_role USING(role_id)');
         return result.rows.map(convertSqlUser);
     } catch (err) {
         console.log(err);

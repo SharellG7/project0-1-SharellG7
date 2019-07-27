@@ -9,18 +9,10 @@ async function getMemberById (e) {
             method: 'GET',
             credentials: "include",
         });
-
+        
         const user = await res.json();
-        const userInfo = document.getElementById('userInfo');
-        console.log(user);
-        console.log(userInfo);
-        userId.innerText = user.userId;
-        username.innerText = user.username;
-        firstname.innerText = user.firstName;
-        lastname.innerText = user.lastName;
-        email.innerText = user.email;
-        role.innerText = user.role.role_type;
-
+        addUser(user);
+        
         localStorage.setItem('user', JSON.stringify(user));
     } catch (err) {
         console.log(err);
@@ -31,7 +23,7 @@ async function getMemberById (e) {
 
 async function getAllMembers (e) {
 
-    // e.preventDefault();
+    e.preventDefault();
     // const id = document.getElementById('inputId').value;
     try {
         const res = await fetch(`http://localhost:8012/users`, {
@@ -40,22 +32,41 @@ async function getAllMembers (e) {
         });
 
         const user = await res.json();
-        const userInfo = document.getElementById('userInfo');
-        console.log(user);
-        console.log(userInfo);
-        for (i=0; i < user.length; i++) {
-            userId.innerText = user.userId;
-            username.innerText = user.username;
-            firstname.innerText = user.firstName;
-            lastname.innerText = user.lastName;
-            email.innerText = user.email;
-            role.innerText = user.role.role_type;
-        }
+        user.forEach(addUser);
 
         localStorage.setItem('user', JSON.stringify(user));
     } catch (err) {
         console.log(err);
-        // const errElement = document.getElementById('error-message');
-        // errElement.innerText = 'Invalid Credentials';
     };
 };
+
+function addUser (user) {
+    const tbody = document.getElementById('tbody');
+    tr = document.createElement('tr');
+    tbody.appendChild(tr);
+
+    const userId = document.createElement('td');
+    userId.innerText = user.userId;
+    tr.appendChild(userId);
+    
+    console.log(tr);
+    const username = document.createElement('td');
+    username.innerText = user.username;
+    tr.appendChild(username);
+
+    const firstName = document.createElement('td');
+    firstName.innerText = user.firstName;
+    tr.appendChild(firstName);
+
+    const lastName = document.createElement('td');
+    lastName.innerText = user.lastName;
+    tr.appendChild(lastName);
+
+    const email = document.createElement('td');
+    email.innerText = user.email;
+    tr.appendChild(email);
+
+    const role = document.createElement('td');
+    role.innerText = user.role.role;
+    tr.appendChild(role);
+}

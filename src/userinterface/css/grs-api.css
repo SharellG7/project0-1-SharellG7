@@ -1,17 +1,16 @@
-h1, p {
-    color: white;
-}
-
-
 #app-nav {
     background-color: #a5a5a5;
     color: white;
     width: 100%;
 }
 
+div {
+    display: block;
+}
 
-
-
+h1, p {
+    color: white;
+}
 
 .btn {
     margin-left: .65em
@@ -21,7 +20,119 @@ h1, p {
     background-color: #4e4242;
 }
 
+/***************************************
+    HOME PAGE
+***************************************/
+.mbr-section-btn {
+    text-align: left;
+}
+
+.mbr-section-btn {
+    margin-left: -.25rem;
+    margin-right: -.25rem;
+    font-size: 0;
+}
+
+.pt-3, .py-3 {
+    padding-top: 1rem!important;
+}
+
+#col-lg-9 {
+    color: #232323;
+    background-color: #FFDA00;
+    padding: 0px 15px;
+}
+
+#content-wrapper {
+    color: #232323;
+    font-size: 16px;
+    padding: 96px 64px;
+}
+
+#row {
+    color: #232323;
+    font-size: 16px;
+    margin: 0px 15px;
+}
+
+/***************************************
+    VIEW USERS PAGE
+***************************************/
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+td, th {
+    padding: 0;
+    text-align: center;
+}
+
+td:first-of-type {
+    padding-left: 36px;
+    width: 66px;
+}
+
 .profile-container {
     width: 100%;
     padding: 5em;
 }
+
+.view-table {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 1.25;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.view-table-cell {
+    padding: 12px 6px 12px 12px;
+    word-wrap: break-word;
+}
+
+.view-table-header th {
+    background-color: #6D5B7E;
+    padding: 18px 6px 18px 12px;
+}
+
+.view-table-header th:first-child {
+    border-top-left-radius:  4px;
+}
+
+.view-table-header th:last-child {
+    border-top-right-radius: 4px;
+}
+
+.view-table-body tr {
+    border-bottom: 4px solid rgba(113, 110, 182, 0.15);
+}
+
+.view-table-body tr:last-child {
+    border-bottom: none;
+}
+
+.view-table-body tr:hover {
+    background-color: rgba(113, 110, 182, 0.15);
+    color: #d7beaf;
+}
+
+.wrapper {
+    margin: 24px 180px;
+}
+
+/***************************************
+    REIMBURSEMENT PAGE
+***************************************/
+
+/***************************************
+    MEMBER PROFILE PAGE
+***************************************/
+
+
+
+
+
