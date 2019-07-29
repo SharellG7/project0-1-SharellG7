@@ -1,30 +1,8 @@
-console.log('loading profile information');
-
-async function getMemberById (e) {
-
-    e.preventDefault();
-    const id = document.getElementById('inputId').value;
-    try {
-        const res = await fetch(`http://localhost:8012/users/${id}`, {
-            method: 'GET',
-            credentials: "include",
-        });
-        
-        const user = await res.json();
-        addUser(user);
-        
-        localStorage.setItem('user', JSON.stringify(user));
-    } catch (err) {
-        console.log(err);
-        // const errElement = document.getElementById('error-message');
-        // errElement.innerText = 'Invalid Credentials';
-    };
-};
+console.log('loading reimbursement information');
 
 async function getAllMembers (e) {
 
     e.preventDefault();
-    // const id = document.getElementById('inputId').value;
     try {
         const res = await fetch(`http://localhost:8012/users`, {
             method: 'GET',
@@ -32,11 +10,16 @@ async function getAllMembers (e) {
         });
 
         const user = await res.json();
+        const tbody = document.getElementById('tbody');
+        tbody.innerHTML = '';
         user.forEach(addUser);
 
         localStorage.setItem('user', JSON.stringify(user));
     } catch (err) {
         console.log(err);
+        const errElement = document.getElementById('error-message');
+        errElement.innerText = 'Unauthorized to View User Information';
+        errElement.style.color = 'red';
     };
 };
 
@@ -48,8 +31,7 @@ function addUser (user) {
     const userId = document.createElement('td');
     userId.innerText = user.userId;
     tr.appendChild(userId);
-    
-    console.log(tr);
+
     const username = document.createElement('td');
     username.innerText = user.username;
     tr.appendChild(username);
@@ -69,4 +51,4 @@ function addUser (user) {
     const role = document.createElement('td');
     role.innerText = user.role.role;
     tr.appendChild(role);
-}
+};

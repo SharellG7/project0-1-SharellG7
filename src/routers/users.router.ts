@@ -22,7 +22,7 @@ usersRouter.get('', [
  * find all greek members by id
  */
 usersRouter.get('/:userId', [
-    authMiddleware('Dean', 'ADP', 'Prophyte', 'Neo', 'Interest'),
+    authMiddleware('Dean', 'ADP'),
     async (req, res) => {
     const users = await userDao.findById(+req.params.userId);
     res.json(users);

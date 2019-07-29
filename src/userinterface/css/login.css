@@ -36,13 +36,13 @@ input:focus {
     box-shadow: 0 0 0 0 !important;
 }
 
-.login_btn {
+.login-btn {
     color: white;
     background-color: #6D5B7E;
     width: 100px;
 }
 
-.login_btn:hover {
+.login-btn:hover {
     color: #6D5B7E;
     background-color: white;
 }

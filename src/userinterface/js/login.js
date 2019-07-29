@@ -23,7 +23,7 @@ async function login(event) {
         //console.log(user);
 
         localStorage.setItem('user', JSON.stringify(user));
-        window.location = './profile.html'; // navigate pages
+        window.location = './home.html'; // navigate pages
     } catch (err) {
         console.log(err);
         console.log('invalid credentials');
