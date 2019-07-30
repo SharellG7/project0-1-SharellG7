@@ -1,60 +1,43 @@
 console.log('loading reimbursement information');
 
-async function getAllReimbursements (e) {
+// async function getAllReimbursements (e) {
 
-    e.preventDefault();
-    try {
-        const res = await fetch(`http://localhost:8012/reimbursements`, {
-            method: 'GET',
-            credentials: "include",
-        });
+//     e.preventDefault();
+//     try {
+//         const res = await fetch(`http://localhost:8012/reimbursements/status/1`, {
+//             method: 'GET',
+//             credentials: "include",
+//         });
 
-        const reimbursement = await res.json();
-        const tbody = document.getElementById('tbody');
-        tbody.innerHTML = '';
-        reimbursement.forEach(addReim);
+//         const reimbursement = await res.json();
+//         const tbody = document.getElementById('tbody');
+//         tbody.innerHTML = '';
+//         reimbursement.forEach(addReim);
 
-        localStorage.setItem('user', JSON.stringify(user)); // sessions
-    } catch (err) {
-        console.log(err);
-        // const errElement = document.getElementById('error-message');
-        // errElement.innerText = 'Unauthorized to View User Information';
-        // errElement.style.color = 'red';
-    };
+//     } catch (err) {
+//         console.log(err);
+//         // const errElement = document.getElementById('error-message');
+//         // errElement.innerText = 'Unauthorized to View User Information';
+//         // errElement.style.color = 'red';
+//     };
+// };
+
+function assignPendingStatus() {
+    getReimByStatus('1');
 };
 
-async function getReimByStatus (e) {
+function assignApprovedStatus() {
+    getReimByStatus('2');
+};
 
-    e.preventDefault();
-    let reimStatusId = 0;
-    let getStatus = '';
-    getStatus = document.getElementById('getStatus').value;
-    
-    switch (getStatus) {
-        case 'pending':
-            reimStatusId = 1;
-            console.log(`pending ${reimStatusId}`);
-            break;
-        case 'approved':
-            reimStatusId = 2;
-            console.log(`approved ${reimStatusId}`);
-            break;
-        default:
-            break;
-    }
-    
-    
-    // let pending = document.getElementById('pending').id;
-    // let approved = document.getElementById('approved').id;
-    // if (pending === 'pending') {
-    //     reimStatusId = 1;
-    //     console.log(reimStatusId);
-    // } else if (approved === 'approved') {
-    //     reimStatusId = 2;
-    //     console.log(reimStatusId);
-    // }
+function assignDeniedStatus() {
+    getReimByStatus('3');
+};
+
+async function getReimByStatus (statusId) {
+
     try {
-        const res = await fetch(`http://localhost:8012/reimbursement/status/${reimStatusId}`, {
+        const res = await fetch(`http://localhost:8012/reimbursement/status/${statusId}`, {
             method: 'GET',
             credentials: "include",
         });
@@ -64,7 +47,6 @@ async function getReimByStatus (e) {
         tbody.innerHTML = '';
         reimbursement.forEach(addReim);
 
-        localStorage.setItem('user', JSON.stringify(user)); // sessions
     } catch (err) {
         console.log(err);
         // const errElement = document.getElementById('error-message');
