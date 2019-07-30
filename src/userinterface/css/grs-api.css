@@ -94,6 +94,7 @@ td, th {
     padding: 0;
     text-align: center;
 }
+t
 td:first-of-type {
     padding-left: 36px;
     width: 66px;
@@ -179,8 +180,8 @@ p {
 .profile-container {
     padding-right: 15px;
     padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+    margin-top: 3em;
+
 }
 .well-sm {
     padding: 9px;

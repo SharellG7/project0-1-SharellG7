@@ -15,34 +15,31 @@
 <body class="container">
     <nav id="app-nav"></nav>
 
+    <h1 class="page-header">View Reimbursements</h1>
     <div class="profile-container">
-        <h1>View Reimbursements</h1>
-        <button class="btn btn-light" onclick="getAllReimbursements (event)">View All</button>
-        <button class="btn btn-light" onclick="getAllMembers(event)">View Pending</button>
-        <button class="btn btn-light" onclick="getAllMembers(event)">View Approved</button>
+        <!-- <button class="btn btn-light" onclick="getAllReimbursements(event)">View All</button> -->
+        <button class="btn btn-light" id="getStatus" value="pending" onclick="getReimByStatus(event)">View Pending</button>
+        <button class="btn btn-light" id="getStatus" value="approved" onclick="getReimByStatus(event)">View Approved</button>
         <button class="btn btn-light" onclick="getAllMembers(event)">View Denied</button>
-        <div class="wrapper">
-            <table class="view-table">
-                <thead class="view-table-header">
-                    <tr>
-                        <th></th>
-                        <th>Reimbursement Id</th>
-                        <th>Author</th>
-                        <th>Amount</th>
-                        <th>Date Submitted</th>
-                        <th>Date Resolved</th>
-                        <th>Description</th>
-                        <th>Resolver</th>
-                        <th>Reimbursement Status</th>
-                        <th>Reimbursement Type</th>
-                    </tr>
-                </thead>
-                <tbody class="view-reim-body" id="tbody"></tbody>
-            </table>
-        </div>
-
     </div>
-
+    <div class="wrapper">
+        <table class="view-table">
+            <thead class="view-table-header">
+                <tr>
+                    <th>Reimbursement Id</th>
+                    <th>Author</th>
+                    <th>Amount</th>
+                    <th>Date Submitted</th>
+                    <th>Date Resolved</th>
+                    <th>Description</th>
+                    <th>Resolver</th>
+                    <th>Reimbursement Status</th>
+                    <th>Reimbursement Type</th>
+                </tr>
+            </thead>
+            <tbody class="view-table-body" id="tbody"></tbody>
+        </table>
+    </div>
 </body>
 
 <!-- Bootstrap js files -->
@@ -57,5 +54,5 @@
     crossorigin="anonymous"></script>
 
 <script src="./navbar/navbar.js"></script>
-<script src="./js/view-users.js"></script>
+<script src="./js/reimbursements.js"></script>
 </html> 
