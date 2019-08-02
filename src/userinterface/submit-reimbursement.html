@@ -1,46 +1,69 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-        <title>Member Profile</title>
-   
-        <!--Bootsrap 4 CDN-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
-        <!--Fontawesome CDN-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    
-        <!--Custom styles-->
-        <link rel="stylesheet" type="text/css" media="screen" href="./css/grs-api.css">
+    <title>Submit Reimbursement | Psi Purple Phi</title>
+
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/grs-api.css">
 </head>
+
 <body class="container">
     <nav id="app-nav"></nav>
 
-    <div class="profile-container">
-        <h1>Pending Reimbursements</h1>
-        <!-- <button class="btn btn-light" onclick="getMemberById(event)">View All</button> -->
-        <button class="btn btn-light" onclick="getAllMembers(event)">View Pending</button>
-        <button class="btn btn-light" onclick="getAllMembers(event)">View Approved</button>
-        <button class="btn btn-light" onclick="getAllMembers(event)">View Denied</button>
-        <div class="wrapper">
-            <table class="view-table">
-                <thead class="view-table-header">
-                    <tr>
-                        <th></th>
-                        <th>Reimbursement Id</th>
-                        <th>Author</th>
-                        <th>Amount</th>
-                        <th>Date Submitted</th>
-                        <th>Date Resolved</th>
-                        <th>Description</th>
-                        <th>Resolver</th>
-                        <th>Reimbursement Type</th>
-                    </tr>
-                </thead>
-                <tbody class="view-reim-body" id="tbody"></tbody>
-            </table>
+    <form>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="reimbursementId">Reimbursement Id</label>
+                <input type="number" class="form-control" id="reimbursementId"
+                    disabled="disabled">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="author">Author</label>
+                <input type="text" class="form-control" id="author"
+                    disabled>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="reimbursementType">Event Type</label>
+                <select id="reimbursementType" class="form-control">
+                    <option selected>Community Service</option>
+                    <option>Fundraiser</option>
+                    <option>Meeting</option>
+                    <option>Entertainment</option>
+                </select>
+            </div>
         </div>
-
-    </div>
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <label for="description">Event Decription</label>
+                <input type="text" class="form-control" id="description">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="amount">Hours</label>
+                <input type="number" class="form-control" id="amount">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-5">
+                <label for="dateSubmitted">Event Date</label>
+                <input type="date" class="form-control" id="dateSubmitted">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="reimbursementStatus">Reimbursement Status</label>
+                <input type="text" class="form-control" id="reimbursementStatus" 
+                    placeholder="Pending" disabled>
+            </div>
+            <button type="submit" class="btn btn-primary col-md-3">Submit</button>
+        </div>
+    </form>
 
 </body>
 
@@ -56,5 +79,6 @@
     crossorigin="anonymous"></script>
 
 <script src="./navbar/navbar.js"></script>
-<script src="./js/view-users.js"></script>
-</html> 
+<script src="./js/submit-reimbursement.js"></script>
+
+</html>

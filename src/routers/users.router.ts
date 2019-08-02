@@ -32,16 +32,14 @@ usersRouter.get('/:userId', [
  * /users
  * partially update member resource
  */
-usersRouter.patch('', [
-    authMiddleware('Dean'),
+usersRouter.patch('',
     async (req, res) => {
-    const userId = req.body.id;
-    const currentLoggedInUser = req.session.user;
-    if (currentLoggedInUser && currentLoggedInUser.id === userId) {
-        
+    // const userId = req.body.userId;
+    // const currentLoggedInUser = req.session.user.userId;
+    // if (currentLoggedInUser === userId) {
         const updatedUser = await userDao.update(req.body);
         res.json(updatedUser);
-    } else {
-        res.sendStatus(403);
-    }
-}]);
+    // } else {
+    //     res.sendStatus(403);
+    // }
+});

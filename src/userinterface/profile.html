@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <title>Member Profile</title>
+        <title>Member Profile | Psi Purple Phi</title>
    
         <!--Bootsrap 4 CDN-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -17,7 +17,7 @@
 
     <div class="profile-container">
             <div class="row">
-                <div class="col-md-12 col-sm-6 col-md-6">
+                <div class="col-md-12 col-md-12 col-md-12">
                     <div class="well well-sm">
                         <div class="row">
                             <div class="col-md-12 col-md-6 col-md-6">
@@ -26,11 +26,11 @@
                             <div class="col-sm-6 col-md-4">
                                 <img src="./images/leafEdit.jpg" alt="" class="img-rounded img-responsive"/>
                                 <br>
-                                <button class="profile-btn general-btn"
-                                onclick="viewUserReimbursements(event)">View Reimbursements</button>
+                                <a class="profile-btn general-btn" href="../userinterface/submit-reimbursement.html">
+                                    Submit New Reimbursement</a>
                             </div>
                             <div class="col-sm-6 col-md-8">
-                                <h4 id="userFullName" class="userFullName"></h4>
+                                <h4 id="fullName" class="fullName"></h4>
                                 <p class="member-profile">
                                     <cite class="fas fa-fingerprint"></cite> User Id: <i id="userId"></i>
                                     <br/>
@@ -54,17 +54,17 @@
                                                 </p>
                                                 <div class="form-group">
                                                     <label for="edit-username">Username</label>
-                                                    <input type="text" class="form-control" id="edit-username" placeholder="username">
+                                                    <input type="text" class="form-control" id="edit-username">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="edit-password">Password</label>
                                                     <input type="password" class="form-control" id="edit-password" placeholder="password">
-                                                    <span id="pass-status" class="fa fa-eye field-icon" aria-hidden="true" onClick="viewPassword()"></span>
+                                                    <span id="pass-status" class="fa fa-eye field-icon" aria-hidden="true" onclick="viewPassword('p')"></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="confirm-password">Confirm Password</label>
                                                     <input type="password" class="form-control" id="confirm-password" placeholder="confirm-password">
-                                                    <span id="pass-status" class="fa fa-eye field-icon" aria-hidden="true" onClick="viewPassword()"></span>
+                                                    <span id="confirm-status" class="fa fa-eye field-icon" aria-hidden="true" onclick="viewPassword('c')"></span>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="edit-email">Email</label>
@@ -75,13 +75,30 @@
                                             <div class="flex-row">
                                                 <button class="general-btn" style="align-self: center"
                                                 onclick="safeUpdateProfile(event)">Update</button>
-                                                <p id="successful-submit"></p>
+                                                <p id="status-submit"></p>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <table class="view-table well well-sm mt-30">
+                            <thead class="view-table-header">
+                                <tr>
+                                    <th>Reimbursement Id</th>
+                                    <th>Author</th>
+                                    <th>Amount</th>
+                                    <th>Date Submitted</th>
+                                    <th>Date Resolved</th>
+                                    <th>Description</th>
+                                    <th>Resolver</th>
+                                    <th>Reimbursement Status</th>
+                                    <th>Reimbursement Type</th>
+                                    <th>Edit Reimbursement</th>
+                                </tr>
+                            </thead>
+                            <tbody class="view-table-body" id="tbody"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -101,4 +118,6 @@
 
 <script src="./navbar/navbar.js"></script>
 <script src="./js/profile.js"></script>
+<script src="./js/view-users-auth.js"></script>
+<script src="./js/reimbursements.js"></script>
 </html>

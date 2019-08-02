@@ -24,12 +24,11 @@ reimbursementRouter.get('/status/:statusId', [
  * /reim/
  * find reimbursement by greek member
  */
-reimbursementRouter.get('/author/userId/:userId', [
-    authMiddleware('Dean', 'ADP'),
+reimbursementRouter.get('/author/userId/:userId', 
     async (req, res) => {
     const users = await reimbursementDao.findByUserId(+req.params.userId);
     res.json(users);
-}]);
+});
 
 /**
  * /reim

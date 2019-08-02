@@ -16,3 +16,7 @@ authRouter.post('/login', async (req, res) => {
         res.send('Invalid Credentials');
     }
 });
+
+authRouter.get('/check-session', (req,res) => {
+    res.json(req.session)
+})

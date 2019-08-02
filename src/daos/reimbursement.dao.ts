@@ -9,18 +9,23 @@ export async function findByStatusId (statusId: number) {
         client = await connectionPool.connect();
     
         let queryString = `
-        SELECT r.reimbursement_id, au.user_id, au.username, au.first_name, au.last_name, au.email, ur.role_id, ur.role_type, r.amount, 
-            r.date_submitted, r.date_resolved, r.resolver, rt.type_id, r.description, rt.reim_type, rs.status_id, rs.reim_status
+        SELECT r.reimbursement_id, au.user_id, au.username, 
+            au.first_name, au.last_name, au.email, ur.role_id, 
+            ur.role_type, r.amount, r.date_submitted, r.date_resolved, 
+            r.resolver, rt.type_id, r.description, rt.reim_type,
+            rs.status_id, rs.reim_status
         FROM reimbursement r
             INNER JOIN app_user au
             ON (au.user_id = r.author)
-                INNER JOIN user_role ur
-                ON (ur.role_id = au.role_id)
-        INNER JOIN reimbursement_status rs
-        ON (r.reim_status = rs.status_id)
-        INNER JOIN reimbursement_type rt
-        ON (r.reim_type = rt.type_id)
-        WHERE rs.status_id = $1;
+                INNER JOIN app_user u
+                ON (u.user_id = r.resolver)
+                    INNER JOIN user_role ur
+                    ON (ur.role_id = au.role_id)
+                        INNER JOIN reimbursement_status rs
+                        ON (r.reim_status = rs.status_id)
+                            INNER JOIN reimbursement_type rt
+                            ON (r.reim_type = rt.type_id)
+        WHERE rs.status_id = $1
         `;
         const result = await client.query(queryString, [statusId]);
         return result.rows.map(convertSqlReimbursement); 
@@ -38,18 +43,23 @@ export async function findByUserId(userId: number){
         client = await connectionPool.connect();
 
         let queryString = `
-                SELECT r.reimbursement_id, au.user_id, au.username, au.first_name, au.last_name, au.email, ur.role_id, ur.role_type, r.amount, 
-            r.date_submitted, r.date_resolved, r.resolver, rt.type_id, r.description, rt.reim_type, rs.status_id, rs.reim_status
+        SELECT r.reimbursement_id, au.user_id, au.username, 
+            au.first_name, au.last_name, au.email, ur.role_id, 
+            ur.role_type, r.amount, r.date_submitted, r.date_resolved, 
+            r.resolver, rt.type_id, r.description, rt.reim_type,
+            rs.status_id, rs.reim_status
         FROM reimbursement r
             INNER JOIN app_user au
             ON (au.user_id = r.author)
-                INNER JOIN user_role ur
-                ON (ur.role_id = au.role_id)
-        INNER JOIN reimbursement_status rs
-        ON (r.reim_status = rs.status_id)
-        INNER JOIN reimbursement_type rt
-        ON (r.reim_type = rt.type_id)
-        WHERE r.author = $1;
+                INNER JOIN app_user u
+                ON (u.user_id = r.resolver)
+                    INNER JOIN user_role ur
+                    ON (ur.role_id = au.role_id)
+                        INNER JOIN reimbursement_status rs
+                        ON (r.reim_status = rs.status_id)
+                            INNER JOIN reimbursement_type rt
+                            ON (r.reim_type = rt.type_id)
+        WHERE r.author = $1
         `;
         const result = await client.query(queryString, [userId]);
         return result && result.rows.map(convertSqlReimbursement);
@@ -67,17 +77,22 @@ export async function findReimbursementById(reimbursementId: number) {
         client = await connectionPool.connect();
     
         let queryString = `
-        SELECT r.reimbursement_id, au.user_id, au.username, au.first_name, au.last_name, au.email, ur.role_id, ur.role_type, r.amount, 
-            r.date_submitted, r.date_resolved, r.resolver, rt.type_id, r.description, rt.reim_type, rs.status_id, rs.reim_status
+        SELECT r.reimbursement_id, au.user_id, au.username, 
+            au.first_name, au.last_name, au.email, ur.role_id, 
+            ur.role_type, r.amount, r.date_submitted, r.date_resolved, 
+            r.resolver, rt.type_id, r.description, rt.reim_type,
+            rs.status_id, rs.reim_status
         FROM reimbursement r
             INNER JOIN app_user au
             ON (au.user_id = r.author)
-                INNER JOIN user_role ur
-                ON (ur.role_id = au.role_id)
-        INNER JOIN reimbursement_status rs
-        ON (r.reim_status = rs.status_id)
-        INNER JOIN reimbursement_type rt
-        ON (r.reim_type = rt.type_id)
+                INNER JOIN app_user u
+                ON (u.user_id = r.resolver)
+                    INNER JOIN user_role ur
+                    ON (ur.role_id = au.role_id)
+                        INNER JOIN reimbursement_status rs
+                        ON (r.reim_status = rs.status_id)
+                            INNER JOIN reimbursement_type rt
+                            ON (r.reim_type = rt.type_id)
         WHERE reimbursement_id = $1;
         `;
         const result = await client.query(queryString, [reimbursementId]);

@@ -11,12 +11,8 @@ nav.innerHTML = `
     <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
             <a class="nav-link active" href="../userinterface/home.html">Home<span class="sr-only">(current)</span></a>
-        </li>
         <li class="nav-item ">
-            <a class="nav-link" href="../userinterface/view-users.html">View Users<span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item ">
-            <a class="nav-link" id="button" href="../userinterface/view-users-auth.js">Test Auth Users
+            <a class="nav-link" id="button" onclick="checkAccess()" href="#">View Users
             <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
@@ -26,8 +22,8 @@ nav.innerHTML = `
         </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="view-reimbursements.html">View Reimbursements</a>
-                <a class="dropdown-item" href="#">Submit Reimbursements</a>
-                <a class="dropdown-item" href="#">Edit Reimbursements</a>
+                <a class="dropdown-item" href="submit-reimbursement.html">Submit Reimbursements</a>
+                <a class="dropdown-item" href="edit-reimbursement.html">Edit Reimbursements</a>
             </div>
         </li>
     </ul>

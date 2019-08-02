@@ -55,6 +55,28 @@ async function getReimByStatus (statusId) {
     };
 };
 
+async function getReimByUserId () {
+
+    e.preventDefault();
+    const id = document.getElementById('userId').value;
+    try {
+        const res = await fetch(`http://localhost:8012/reimbursement/author/userId/${id}`, {
+            method: 'GET',
+            credentials: "include",
+        });
+        
+        const user = await res.json();
+        const tbody = document.getElementById('tbody');
+        addUser(user);
+        
+    } catch (err) {
+        console.log(err);
+        // const errElement = document.getElementById('error-message');
+        // errElement.innerText = 'Unauthorized to View User Information';
+        // errElement.style.color = 'red';
+    };
+};
+
 function addReim (reimbursement) {
     const tbody = document.getElementById('tbody');
     tr = document.createElement('tr');
