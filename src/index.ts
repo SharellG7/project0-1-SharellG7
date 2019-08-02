@@ -1,9 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { usersRouter } from './src/routers/users.router';
-import { authRouter } from './src/routers/auth.router';
-import { sessionMiddleware } from './src/middleware/session.middleware';
-import { reimbursementRouter } from './src/routers/reimbursement.router';
+import { usersRouter } from './routers/users.router';
+import { authRouter } from './routers/auth.router';
+import { sessionMiddleware } from './middleware/session.middleware';
+import { reimbursementRouter } from './routers/reimbursement.router';
 
 /**
  * specify the port will run on

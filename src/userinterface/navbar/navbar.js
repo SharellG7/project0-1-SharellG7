@@ -27,12 +27,16 @@ nav.innerHTML = `
             </div>
         </li>
     </ul>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="../userinterface/profile.html">Member Profile<span
-                    class="sr-only">(current)</span></a>
-        </li>
-    </ul>
+    <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" id="nav-username" 
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="../userinterface/profile.html">Profile</a>
+            <a class="dropdown-item" href="edit-reimbursement.html">Edit Reimbursement</a>
+            <a class="dropdown-item" href="submit-reimbursement.html">Submit Reimbursement</a>
+        </div>
+    </div>
     <div id="nav-username" class="my-2 my-md-0"></div>
     <ul class="navbar-nav">
         <li class="nav-item">

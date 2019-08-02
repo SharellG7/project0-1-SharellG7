@@ -2,7 +2,7 @@
   "name": "express-template",
   "version": "1.0.0",
   "description": "This is a template for a basic express application",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "start": "nodemon index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
