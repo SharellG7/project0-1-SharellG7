@@ -4,7 +4,7 @@ console.log('loading users information');
         SHOW CURRENT USER INFO
 ***************************************/
 const fullUser = JSON.parse(localStorage.getItem('user'));
-if (user) {
+if (user) { 
     const fullName = document.getElementById('fullName').innerText =
         (`${user.firstName} ${user.lastName}`);
     document.getElementById('username').innerText = (` ${user.username}`);
@@ -14,6 +14,7 @@ if (user) {
     document.getElementById('role').innerText = (` ${user.role.role}`);
 };
 
+// Pre-fills Information
 const editUsername = document.getElementById('edit-username');
 const editEmail = document.getElementById('edit-email');
 editUsername.value = fullUser.username;
@@ -25,6 +26,7 @@ editEmail.value = fullUser.email;
 async function safeUpdateProfile(event) {
     event.preventDefault();
     console.log('updating profile from form data');
+
     const password = document.getElementById('edit-password').value;
     const ConfirmPassword = document.getElementById('confirm-password').value;
     const updateProfileInfo = {
@@ -39,7 +41,7 @@ async function safeUpdateProfile(event) {
         console.log(user.userId);
         const res = await fetch(`http://localhost:8012/users`, {
             method: 'PATCH',
-            updateProfileInfo: 'include',
+            credentials: 'include',
             body: JSON.stringify(updateProfileInfo),
             headers: {
                 'content-type': 'application/json'
@@ -56,8 +58,6 @@ async function safeUpdateProfile(event) {
         errElement.style.color = 'red';
 
     }
-    // safeAdd(user);
-    // loadData();
 }
 
 /***************************************
@@ -122,6 +122,7 @@ async function getUserReim() {
 
     const user = JSON.parse(localStorage.getItem('user'));
     const res = await fetch(`http://localhost:8012/reimbursement/author/userId/${user.userId}`, {
+        method: 'GET',
         credentials: 'include'
     });
     const reimbursement = await res.json();
@@ -139,7 +140,7 @@ function addReim(reimbursement) {
     tr.appendChild(reimbursementId);
 
     const author = document.createElement('td');
-    author.innerText = reimbursement.author.userId;
+    author.innerText = reimbursement.author.username;
     tr.appendChild(author);
 
     const amount = document.createElement('td');
@@ -147,11 +148,13 @@ function addReim(reimbursement) {
     tr.appendChild(amount);
 
     const dateSubmitted = document.createElement('td');
-    dateSubmitted.innerText = reimbursement.dateSubmitted;
+    let formatDate = new Date(reimbursement.dateSubmitted).toDateString();
+    dateSubmitted.innerText = formatDate;
     tr.appendChild(dateSubmitted);
-
+    
     const dateResolved = document.createElement('td');
-    dateResolved.innerText = reimbursement.dateResolved;
+    formatDate = reimbursement.dateResolved && new Date(reimbursement.dateResolved).toDateString();
+    dateResolved.innerText = formatDate;
     tr.appendChild(dateResolved);
 
     const description = document.createElement('td');
@@ -159,7 +162,7 @@ function addReim(reimbursement) {
     tr.appendChild(description);
 
     const resolver = document.createElement('td');
-    resolver.innerText = reimbursement.resolver.userId;
+    resolver.innerText = reimbursement.resolver.username;
     tr.appendChild(resolver);
 
     const reimbursementStatus = document.createElement('td');

@@ -18,9 +18,9 @@ async function getMemberById (e) {
         localStorage.setItem('user', JSON.stringify(user));
     } catch (err) {
         console.log(err);
-        const errElement = document.getElementById('error-message');
-        errElement.innerText = 'Unauthorized to View User Information';
-        errElement.style.color = 'red';
+        // const errElement = document.getElementById('error-message');
+        // errElement.innerText = 'Unauthorized to View User Information';
+        // errElement.style.color = 'red';
     };
 };
 

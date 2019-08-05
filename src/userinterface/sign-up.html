@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login | Psi Purple Phi</title>
+
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="./css/sign-up.css">
+</head>
+
+<body>
+    <div class="welcome-header">
+        <h1>&Phi;P&Psi;</h1>
+    </div>
+    <div class="container">
+        <div class="header">
+            <span class="login"><a href="./login.html">Log In</a></span> or 
+            <span class="signup">Sign Up</span>
+        </div> <!-- end header -->
+
+        <hr />
+
+        <form>
+            <input type="text" name="firstname" id="firstName" placeholder="First Name" required />
+            <input type="text" name="lastname" id="lastName" placeholder="Last Name" required />
+            <input type="text" name="username" id="username" placeholder="Username" required />
+            <input type="password" name="password" id="password" placeholder="Password" required />
+            <input type="email" name="email" id="email" placeholder="Email"
+                pattern=".+@ppp.org" size="30" required />
+            
+            <div class="help-block">By creating an account you agree to our <a href="#">Terms/Privacy</a></div>
+            <button type="submit" class="general-btn" onclick="createNewUser(event)">Create Account</button>
+            <p id="status-submit"></p>
+        </form>
+
+    </div> <!-- end container -->
+</body>
+<script src="./js/sign-up.js"></script>
+
+</html>

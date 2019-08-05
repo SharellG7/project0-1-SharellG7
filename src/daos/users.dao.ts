@@ -9,7 +9,10 @@ export async function findAll(){
     let client: PoolClient;
     try {
         client = await connectionPool.connect();
-        const result = await client.query('SELECT * FROM app_user JOIN user_role USING(role_id)');
+        const result = await client.query(`
+        SELECT * FROM app_user 
+            JOIN user_role USING(role_id) 
+            ORDER BY role_id, user_id`);
         return result.rows.map(convertSqlUser);
     } catch (err) {
         console.log(err);
@@ -63,7 +66,28 @@ export async function findById (userId: number) {
     return undefined;
 }; 
 
-export async function update(user: Users) {
+export async function create(user: Users) {
+    console.log('Creating new greek user');
+    let client: PoolClient;
+    try {
+        client = await connectionPool.connect();
+        const queryString = `
+        INSERT INTO app_user (username, userpassword, first_name, last_name, email, role_id)
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING user_id;`
+        const params = [user.username, user.password, user.firstName, 
+        user.lastName, user.email, user.role.roleId];
+        const sqlUser = await client.query(queryString, params);
+        return sqlUser && sqlUser.rows[0];
+    } catch (err) {
+        console.log(err)
+    } finally {
+        client && client.release();
+    }
+    return undefined;
+}
+
+export async function update(user: Partial<Users>) {
     const oldUser = await findById(user.userId);
     //console.log(oldUser);
     if (!oldUser) {

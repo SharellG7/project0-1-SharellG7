@@ -18,7 +18,7 @@ function addReim(reimbursement) {
     tr.appendChild(reimbursementId);
 
     const author = document.createElement('td');
-    author.innerText = reimbursement.author.userId;
+    author.innerText = reimbursement.author.username;
     tr.appendChild(author);
 
     const amount = document.createElement('td');
@@ -26,10 +26,12 @@ function addReim(reimbursement) {
     tr.appendChild(amount);
 
     const dateSubmitted = document.createElement('td');
-    dateSubmitted.innerText = reimbursement.dateSubmitted;
+    let formatDate = reimbursement.dateSubmitted && new Date(reimbursement.dateSubmitted).toDateString();
+    dateSubmitted.innerText = formatDate;
     tr.appendChild(dateSubmitted);
 
     const dateResolved = document.createElement('td');
+    formatDate = reimbursement.dateResolved && new Date(reimbursement.dateSubmitted).toDateString();
     dateResolved.innerText = reimbursement.dateResolved;
     tr.appendChild(dateResolved);
 
@@ -38,7 +40,7 @@ function addReim(reimbursement) {
     tr.appendChild(description);
 
     const resolver = document.createElement('td');
-    resolver.innerText = reimbursement.resolver.userId;
+    resolver.innerText = reimbursement.resolver.username;
     tr.appendChild(resolver);
 
     const reimbursementStatus = document.createElement('td');
@@ -48,4 +50,12 @@ function addReim(reimbursement) {
     const reimbursementType = document.createElement('td');
     reimbursementType.innerText = reimbursement.type.type;
     tr.appendChild(reimbursementType);
+
+    let editBtn = document.createElement("BUTTON");
+    const pencil = `<a class="button button-small edit" title="Edit">
+        <i class="fas fa-pencil-alt"></i></a>`;
+    editBtn.innerHTML = pencil;
+    tr.appendChild(editBtn);
+
 };
+

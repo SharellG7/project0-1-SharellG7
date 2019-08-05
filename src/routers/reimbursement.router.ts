@@ -34,14 +34,13 @@ reimbursementRouter.get('/author/userId/:userId',
  * /reim
  * create new member resource w/ proper permissions
  */
-reimbursementRouter.post('', [
-    authMiddleware('Dean'),
+reimbursementRouter.post('',
     (req, res) => {
     const user = req.body;
     reimbursementDao.save(user);
     res.status(201); // created status code
     res.json(user);
-}]);
+});
 
 /**
  * /reim

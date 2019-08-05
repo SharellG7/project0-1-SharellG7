@@ -34,10 +34,10 @@
             <div class="form-group col-md-6">
                 <label for="reimbursementType">Event Type</label>
                 <select id="reimbursementType" class="form-control">
-                    <option selected>Community Service</option>
-                    <option>Fundraiser</option>
-                    <option>Meeting</option>
-                    <option>Entertainment</option>
+                    <option value="1" selected>Community Service</option>
+                    <option value="2">Meeting</option>
+                    <option value="3">Fundraiser</option>
+                    <option value="4">Entertainment</option>
                 </select>
             </div>
         </div>
@@ -61,8 +61,10 @@
                 <input type="text" class="form-control" id="reimbursementStatus" 
                     placeholder="Pending" disabled>
             </div>
-            <button type="submit" class="btn btn-primary col-md-3">Submit</button>
+            <button class="general-btn" style="align-self: center"
+                onclick="submitReimbursement(event)">Submit</button>
         </div>
+        <p id="status-submit"></p>
     </form>
 
 </body>
@@ -79,7 +81,7 @@
     crossorigin="anonymous"></script>
 
 <script src="./navbar/navbar.js"></script>
-<script src="./navbar/navbar.js"></script>
+<script src="./js/viewer-auth.js"></script>
 <script src="./js/submit-reimbursement.js"></script>
-
+<script src="./js/reim-auth.js"></script>
 </html>

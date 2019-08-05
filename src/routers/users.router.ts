@@ -30,16 +30,32 @@ usersRouter.get('/:userId', [
 
 /**
  * /users
+ * create member resource
+ */
+usersRouter.post('',
+    async (req, res) => {
+        const user = req.body;
+        if (!user) {
+            res.sendStatus(400);
+        } else {
+            const newUser = await userDao.create(user);
+            res.status(201);
+            res.json(newUser);
+}});
+
+/**
+ * /users
  * partially update member resource
  */
 usersRouter.patch('',
     async (req, res) => {
-    // const userId = req.body.userId;
-    // const currentLoggedInUser = req.session.user.userId;
-    // if (currentLoggedInUser === userId) {
+    const userId = req.body.userId;
+    const currentLoggedInUser = req.session.user.userId;
+    console.log(userId)
+    if (currentLoggedInUser === userId) {
         const updatedUser = await userDao.update(req.body);
         res.json(updatedUser);
-    // } else {
-    //     res.sendStatus(403);
-    // }
+    } else {
+        res.sendStatus(403);
+    }
 });

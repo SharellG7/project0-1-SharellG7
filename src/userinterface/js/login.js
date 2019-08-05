@@ -32,3 +32,17 @@ async function login(event) {
         errElement.style.color = 'red';
     };
 };
+
+function viewPassword(pass) {
+    let passwordInput = document.getElementById('edit-password');
+    let passStatus = document.getElementById('pass-status');
+
+    if (passwordInput.type == 'password') {
+        passwordInput.type = 'text';
+        passStatus.className = 'fa fa-eye-slash';
+    }
+    else {
+        passwordInput.type = 'password';
+        passStatus.className = 'fa fa-eye';
+    }
+}

@@ -1,6 +1,6 @@
 import Users from "./users";
-import ReimbursementStatus from "./reimbursement-status";
 import ReimbursementType from "./reimbursement-type";
+import ReimbursementStatus from "./reimbursement-status";
 
 export default class Reimbursement {
     constructor (

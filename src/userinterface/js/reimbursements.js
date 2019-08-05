@@ -4,7 +4,7 @@ console.log('loading reimbursement information');
 
 //     e.preventDefault();
 //     try {
-//         const res = await fetch(`http://localhost:8012/reimbursements/status/1`, {
+//         const res = await fetch(`http://localhost:8012/reimbursements`, {
 //             method: 'GET',
 //             credentials: "include",
 //         });
@@ -22,6 +22,29 @@ console.log('loading reimbursement information');
 //     };
 // };
 
+async function getReimByUserId (e) {
+
+    e.preventDefault();
+    const id = document.getElementById('userId').value;
+    try {
+        const res = await fetch(`http://localhost:8012/reimbursement/author/userId/${id}`, {
+            method: 'GET',
+            credentials: "include",
+        });
+        
+        const reimbursement = await res.json();
+        const tbody = document.getElementById('tbody');
+        tbody.innerHTML = '';
+        reimbursement.forEach(addReim);
+        
+    } catch (err) {
+        console.log(err);
+        // const errElement = document.getElementById('error-message');
+        // errElement.innerText = 'Unauthorized to View User Information';
+        // errElement.style.color = 'red';
+    };
+};
+
 function assignPendingStatus() {
     getReimByStatus('1');
 };
@@ -37,38 +60,19 @@ function assignDeniedStatus() {
 async function getReimByStatus (statusId) {
 
     try {
+        // console.log(statusId);
         const res = await fetch(`http://localhost:8012/reimbursement/status/${statusId}`, {
             method: 'GET',
             credentials: "include",
         });
 
+        // console.log(res);
         const reimbursement = await res.json();
         const tbody = document.getElementById('tbody');
         tbody.innerHTML = '';
+        addActionHeader();
         reimbursement.forEach(addReim);
 
-    } catch (err) {
-        console.log(err);
-        // const errElement = document.getElementById('error-message');
-        // errElement.innerText = 'Unauthorized to View User Information';
-        // errElement.style.color = 'red';
-    };
-};
-
-async function getReimByUserId () {
-
-    e.preventDefault();
-    const id = document.getElementById('userId').value;
-    try {
-        const res = await fetch(`http://localhost:8012/reimbursement/author/userId/${id}`, {
-            method: 'GET',
-            credentials: "include",
-        });
-        
-        const user = await res.json();
-        const tbody = document.getElementById('tbody');
-        addUser(user);
-        
     } catch (err) {
         console.log(err);
         // const errElement = document.getElementById('error-message');
@@ -95,11 +99,13 @@ function addReim (reimbursement) {
     tr.appendChild(amount);
 
     const dateSubmitted = document.createElement('td');
-    dateSubmitted.innerText = reimbursement.dateSubmitted;
+    let formatDate = reimbursement.dateSubmitted && new Date(reimbursement.dateSubmitted).toDateString();
+    dateSubmitted.innerText = formatDate;
     tr.appendChild(dateSubmitted);
-
+    
     const dateResolved = document.createElement('td');
-    dateResolved.innerText = reimbursement.dateResolved;
+    formatDate = reimbursement.dateResolved && new Date(reimbursement.dateSubmitted).toDateString();
+    dateResolved.innerText = formatDate;
     tr.appendChild(dateResolved);
 
     const description = document.createElement('td');
@@ -117,4 +123,47 @@ function addReim (reimbursement) {
     const reimbursementType = document.createElement('td');
     reimbursementType.innerText = reimbursement.type.type;
     tr.appendChild(reimbursementType);
+
+    if (reimbursementStatus.innerText === 'Pending') {
+        const approveBtn = document.createElement('button');
+        approveBtn.classList = `btn-success `;
+        approveBtn.innerText = `Approve`;
+        approveBtn.setAttribute= ('onclick', "setAction('approve');"); 
+        tr.appendChild(approveBtn);
+
+        const denyBtn = document.createElement('button');
+        denyBtn.classList = `btn-danger`;
+        denyBtn.innerText = `Deny`;
+        // approveBtn.setAttribute.onclick = setAction('deny');
+        tr.appendChild(denyBtn); 
+
+    } else if (reimbursementStatus.innerText === 'Approved' ||
+        reimbursementStatus.innerText === 'Denied') {
+            const voidText = document.createElement('td');
+            voidText.innerText = 'No Action Required';
+            voidText.style.color = 'green';
+            tr.appendChild(voidText);
+        }
 };
+
+function addActionHeader () {
+    // checks if header as been added already
+    if (document.getElementById('set')) {
+        return;
+    }
+
+    const trow = document.getElementById('trow');
+    th = document.createElement('th');
+    trow.appendChild(th);
+    th.id = 'set';
+    
+    const addTableHeader = document.createElement('th');
+    addTableHeader.innerHTML = 'Actions';
+    th.appendChild(addTableHeader);
+};
+
+function setAction (action) {
+    console.log(`setting action: ${action}`);
+
+
+}

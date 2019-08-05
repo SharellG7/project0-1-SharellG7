@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: url('../images/leafEdit.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font: 13px/23px "Lato", Arial, sans-serif;
+  color: #a6a4a2;
+  padding: 40px 0;
+}
+
+.container {
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+  background: white;
+  border-radius: 700px;
+  border: 8px solid #d7beaf;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+
+hr {
+  border: 0; 
+  height: 1px; 
+  background: #e9e6e2;
+  margin: 15px 100px;
+}
+
+a {
+  text-decoration: none;
+  color: #6D5B7E;
+}
+a:hover {
+  text-decoration: underline;
+  color: lighten(#6D5B7E, 5%);
+}
+
+.header {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 16px;
+}
+.header .login {
+  color: #6D5B7E;
+  text-transform: uppercase;
+  margin-right: 5px;
+}
+ .header .signup {
+  color: #6c6763;
+  text-transform: uppercase;
+  margin-left: 5px;
+}
+
+input {
+  outline: none;
+  display: block;
+  width: 70%;
+  border: 1px solid darken(white, 15%);
+  border: none;
+  border-radius: 3px;
+  background: #f7f6f5;
+  margin: 20px auto;
+  padding: 7px 15px;   
+}
+
+input[type="submit"] {
+  width: 35%;
+  color: white;
+  font-size: 15px;
+  border-radius: 5px;
+  background: linear-gradient(#af96d4, #9b88b9);
+  cursor: pointer;
+  padding: 7px 20px;
+}
+input:hover {
+  background: linear-gradient(lighten(#af96d4, 5%), lighten(#9b88b9, 5%));
+}
+.general-btn {
+  color: #fff;
+  background-color: #6D5B7E;
+  width: 150px;
+  text-align: center;
+  display: inline-block;
+  padding: 10px 28px;
+  margin: 0 auto;
+  /* border: 1px solid #fff; */
+  border-radius: 8px;
+}
+
+.help-block {
+  margin-top: -10px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.links a, a:hover {
+  margin-left: 4px;
+  color: #6D5B7E;
+}
+
+
+.welcome-header {
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding-top: 80px;
+  margin-bottom: 0em;
+}
+.welcome-header h1 {
+  font-size: 130px;
+}
+
+::-webkit-input-placeholder {
+  font-size: 13px;
+}
+
+::-moz-placeholder {
+  font-size: 13px;
+} 
