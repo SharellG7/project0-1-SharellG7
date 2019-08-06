@@ -12,15 +12,12 @@ body {
   padding: 40px 0;
 }
 
-.container {
-  margin: 0 auto;
-  width: 500px;
-  height: 500px;
-  background: white;
-  border-radius: 700px;
-  border: 8px solid #d7beaf;
-  -webkit-background-clip: padding-box;
-  background-clip: padding-box;
+p {
+  color: #000;
+  font: 5px;
+  text-align: center;
+  margin-top: 0 0;
+  margin-bottom: 0 0;
 }
 
 hr {
@@ -37,6 +34,17 @@ a {
 a:hover {
   text-decoration: underline;
   color: lighten(#6D5B7E, 5%);
+}
+
+.container {
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+  background: white;
+  border-radius: 700px;
+  border: 8px solid #d7beaf;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 
 .header {
@@ -66,7 +74,6 @@ input {
   margin: 20px auto;
   padding: 7px 15px;   
 }
-
 input[type="submit"] {
   width: 35%;
   color: white;
@@ -79,16 +86,24 @@ input[type="submit"] {
 input:hover {
   background: linear-gradient(lighten(#af96d4, 5%), lighten(#9b88b9, 5%));
 }
+input[type="password"] {
+  margin-top: 0;
+}
+
 .general-btn {
   color: #fff;
   background-color: #6D5B7E;
-  width: 150px;
+  width: 155px;
   text-align: center;
   display: inline-block;
-  padding: 10px 28px;
-  margin: 0 auto;
-  /* border: 1px solid #fff; */
+  padding: 8px 10px;
+  margin-left: 150px;
   border-radius: 8px;
+}
+.general-btn:hover{
+  color: #000;
+  background-color: #d7beaf;
+  border: 1px solid #6D5B7E;
 }
 
 .help-block {

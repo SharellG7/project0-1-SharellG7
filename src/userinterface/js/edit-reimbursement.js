@@ -1,6 +1,7 @@
 async function getUserReim() {
     const user = JSON.parse(localStorage.getItem('user'));
     const res = await fetch(`http://localhost:8012/reimbursement/author/userId/${user.userId}`, {
+        method: 'PATCH',
         credentials: 'include'
     });
     const reimbursement = await res.json();

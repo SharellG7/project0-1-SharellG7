@@ -22,7 +22,8 @@ export async function findByStatusId (statusId: number) {
             LEFT JOIN user_role ur ON (ur.role_id = author.role_id)
             LEFT JOIN reimbursement_status rs ON (r.reim_status = rs.status_id)
             LEFT JOIN reimbursement_type rt ON (r.reim_type = rt.type_id)
-		WHERE rs.status_id = $1
+        WHERE rs.status_id = $1
+        ORDER BY reimbursement_id
         `;
         const result = await client.query(queryString, [statusId]);
         return result.rows.map(convertSqlReimbursement); 
@@ -54,6 +55,7 @@ export async function findByUserId(userId: number){
             LEFT JOIN reimbursement_status rs ON (r.reim_status = rs.status_id)
             LEFT JOIN reimbursement_type rt ON (r.reim_type = rt.type_id)
         WHERE r.author = $1
+        ORDER BY r.reimbursement_id
         `;
         const result = await client.query(queryString, [userId]);
         return result && result.rows.map(convertSqlReimbursement);
@@ -85,6 +87,7 @@ export async function findReimbursementById(reimbursementId: number) {
             LEFT JOIN reimbursement_status rs ON (r.reim_status = rs.status_id)
             LEFT JOIN reimbursement_type rt ON (r.reim_type = rt.type_id)
         WHERE reimbursement_id = $1
+        ORDER BY reimbursement_id
         `;
         const result = await client.query(queryString, [reimbursementId]);
         const sqlReimbursement = result.rows[0];
@@ -138,8 +141,8 @@ export async function patch(reimbursement: Partial<Reimbursement>) {
                 resolver = $7, reim_status = $8, reim_type = $9
             WHERE reimbursement_id = $1
         `;
-        const params = [reimbursement.reimbursementId, reimbursement.author.userId, reimbursement.amount, reimbursement.dateSubmitted, 
-            reimbursement.dateResolved, reimbursement.description, reimbursement.resolver.userId, reimbursement.status && reimbursement.status.statusId, 
+        const params = [reimbursement.reimbursementId, reimbursement.author && reimbursement.author.userId, reimbursement.amount, reimbursement.dateSubmitted, 
+            reimbursement.dateResolved, reimbursement.description, reimbursement.resolver && reimbursement.resolver.userId, reimbursement.status && reimbursement.status.statusId, 
             reimbursement.type && reimbursement.type.typeId];
             await client.query(queryString, params);
             return reimbursement;

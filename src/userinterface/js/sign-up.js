@@ -45,3 +45,7 @@ async function createNewUser(event) {
         errElement.style.color = 'red';
     };
 };
+
+function usernameValidation () {
+    
+}
