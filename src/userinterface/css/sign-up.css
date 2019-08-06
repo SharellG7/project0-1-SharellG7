@@ -81,7 +81,8 @@ input[type="submit"] {
   border-radius: 5px;
   background: linear-gradient(#af96d4, #9b88b9);
   cursor: pointer;
-  padding: 7px 20px;
+  margin: 20px auto;
+  /* padding: 7px 20px; */
 }
 input:hover {
   background: linear-gradient(lighten(#af96d4, 5%), lighten(#9b88b9, 5%));

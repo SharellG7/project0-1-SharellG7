@@ -52,22 +52,3 @@ reimbursementRouter.patch('', [
     reimbursementDao.patch(req.body);
     res.end();
 }]);
-
-/// UNUSED AUTHMIDDLEWARE FOR GET REIM BY ID
-// reimbursementRouter.get('/author/userId/:userId', [
-//     authMiddleware('Dean', 'ADP', 'Neo', 'Prophtye', 'Interest'), // anyone should be allowed
-//     async (req, res) => {
-//     const users = await reimbursementDao.findByUserId(+req.params.userId);
-//     console.log(req.session.user);
-//     if (!users) {
-//         res.status(400);
-//     } else { // here wwe check if they are athorized
-//         if (users[0].author.userId == req.session.user.userId || req.session.user.roleId === '1' 
-//            || req.session.user.roleId === '2') {
-//             res.json(users);
-//            }
-//         else {
-//             res.status(403);
-//         }
-//     }
-// }]);

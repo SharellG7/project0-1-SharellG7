@@ -46,6 +46,12 @@ async function createNewUser(event) {
     };
 };
 
-function usernameValidation () {
-    
-}
+// function usernameValidation () {
+//     for (let i = 0; i < listOptions.length; i++) {
+//         if (listOptions[i].value === user.value) {
+//           alert('The name already exist')
+//         }
+//       }
+//       return false;
+ 
+// }

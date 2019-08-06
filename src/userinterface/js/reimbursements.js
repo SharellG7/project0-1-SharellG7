@@ -1,27 +1,5 @@
 console.log('loading reimbursement information');
 
-async function getAllReimbursements (e) {
-
-    e.preventDefault();
-    try {
-        const res = await fetch(`http://localhost:8012/reimbursements`, {
-            method: 'GET',
-            credentials: "include",
-        });
-
-        const reimbursement = await res.json();
-        const tbody = document.getElementById('tbody');
-        tbody.innerHTML = '';
-        reimbursement.forEach(addReim);
-
-    } catch (err) {
-        console.log(err);
-        // const errElement = document.getElementById('error-message');
-        // errElement.innerText = 'Unauthorized to View User Information';
-        // errElement.style.color = 'red';
-    };
-};
-
 async function getReimByUserId (e) {
 
     e.preventDefault();
@@ -189,31 +167,14 @@ async function updateReimbursement (id, getStatus) {
     }
     console.log(getStatus);
 
-    // const reimResolver = document.getElementById('resolver');
     const reimDateResolved = new Date().toDateString();
-    // const reimStatus = document.getElementById('reimbursementStatus');
-    // const reimbursement = {
-    //     type: {
-    //         typeId: reimbursementType.value
-    //     },
-    //     author: {
-    //         userId: +reimAuthor.value
-    //     },
-    //     resolver: reimResolver,
-    //     dateResolved: reimDateResolved,
-    //     status: {
-    //         status: reimStatus
-    //     }
-    // }
     const updateReimbursement = {
-        // ...reimbursement,
         reimbursementId: +id,
         resolver: {
             userId: user.userId,
         },
         dateResolved: reimDateResolved,
         status: {
-            // statusId: getStatus
             statusId: getNewStatus
         }
     }
