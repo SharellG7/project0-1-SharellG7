@@ -48,14 +48,24 @@ async function safeUpdateProfile(event) {
             }
         });
         const successfulSubmit = document.getElementById('status-submit');
-        successfulSubmit.innerText = 'Successfully updated!';
-        successfulSubmit.style.color = 'green';
+        successfulSubmit.innerHTML = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> You have updated your profile.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>`;
 
     } catch (err) {
         console.log(err);
         const errElement = document.getElementById('status-submit');
-        errElement.innerText = 'Unsuccessfull update, please try again later.';
-        errElement.style.color = 'red';
+        errElement.innerHTML = `
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Uh oh!</strong> An error occurred. Please try again. 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>`;
 
     }
 }

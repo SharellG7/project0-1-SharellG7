@@ -1,18 +1,13 @@
 const nav = document.getElementById('app-nav');
-nav.classList = 'navbar navbar-expand-md navbar-light';
+nav.classList = 'navbar navbar-expand-md';
 nav.innerHTML = `
-<a class="navbar-brand" href="#">&Phi;P&Psi;</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04"
-    aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-
+<span class="navbar-brand" href="#">&Phi;P&Psi;</span>
 <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
-            <a class="nav-link active" href="../userinterface/home.html">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="../userinterface/home.html">Home<span class="sr-only">(current)</span></a>
         <li class="nav-item ">
-            <a class="nav-link" id="button" onclick="usersAccess()" href="#">View Users
+            <a class="nav-link" id="button" onclick="usersAccess()" href="#">View Members
             <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown">
@@ -26,14 +21,8 @@ nav.innerHTML = `
             </div>
         </li>
     </ul>
-    <div class="dropdown show">
-        <a class="btn btn-secondary dropdown-toggle" href="#" id="nav-username" 
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="nav-link" href="../userinterface/profile.html">View/Edit Profile</a>
-        </div>
-    </div>
+    <a class="userbtn" href="../userinterface/profile.html" id="nav-username">
+    </a>
     <div id="nav-username" class="my-2 my-md-0"></div>
     <ul class="navbar-nav">
         <li class="nav-item">

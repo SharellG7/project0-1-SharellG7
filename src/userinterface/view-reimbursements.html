@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-        <title>View Reimbursement | Psi Purple Phi</title>
-   
-        <!--Bootsrap 4 CDN-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
-            integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
-        <!--Fontawesome CDN-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
-            integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    
-        <!--Custom styles-->
-        <link rel="stylesheet" type="text/css" media="screen" href="./css/grs-api.css">
+    <title>View Reimbursement | Psi Purple Phi</title>
+
+    <!--Bootsrap 4 CDN-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/grs-api.css">
 </head>
+
 <body class="container">
     <nav id="app-nav"></nav>
 
-    <h1 class="page-header">View Reimbursements</h1>
 
-    <div class="profile-container">
-        <!-- <button class="btn btn-light" onclick="getAllReimbursements(event)">View All</button> -->
-        <button class="btn btn-light" onclick="assignPendingStatus()">View Pending</button>
-        <button class="btn btn-light" onclick="assignApprovedStatus()">View Approved</button>
-        <button class="btn btn-light" onclick="assignDeniedStatus()">View Denied</button>
-        <input type="number" id="userId"/>
-        <button class="btn btn-light" onclick="getReimByUserId(event)">Find by Author</button>         
-        
-        <table class="view-table">
+    <div class="well well-sm mb-30">
+        <h1 class="page-header">View Reimbursements</h1>
+        <p>To find reimbursement information, you can search by member Id or find bt status.</p>
+        <hr />
+        <div class="row findR-container">
+            <input type="number" id="userId" class="userId" min="0" />
+            <button class="btn btn-light" onclick="getReimByUserId(event)">Find by Author</button>
+            <div class="row">
+                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Find by Status
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" id="button" onclick="assignPendingStatus()" href="#">View Pending</a>
+                    <a class="dropdown-item" id="button" onclick="assignApprovedStatus()" href="#">View Approved</a>
+                    <a class="dropdown-item" id="button" onclick="assignDeniedStatus()" href="#">View Denied</a>
+                </div>
+            </div>
+        </div>
+
+        <table class="view-table mb-30">
             <thead class="view-table-header">
                 <tr id="trow">
                     <th>Reimbursement Id</th>
@@ -61,4 +74,5 @@
 <script src="./js/reimbursements.js"></script>
 <script src="./js/viewer-auth.js"></script>
 <script src="./js/reim-auth.js"></script>
-</html> 
+
+</html>

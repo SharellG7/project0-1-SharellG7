@@ -1,0 +1,127 @@
+#app-nav {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+}
+.nav-link {
+    color: #fff;
+}
+.nav-link:hover {
+    color: #d7beaf;
+}
+.nav-item .dropdown-menu {
+    background: #000;
+}
+
+.container {
+    background-color: #4e4242;
+}   
+.btn {
+    background-color: #6D5B7E;
+	text-decoration: none;
+	padding: 10px 28px;
+	color: #fff;
+	margin-top: 10px;
+	display: inline-block;
+    margin-left: 1em;
+}
+.btn-position {
+    margin-top: 3em;
+    margin-left: 4em; 
+}
+.btn:hover {
+    background-color: #fff;
+    color: #6D5B7E;
+    border: 2px solid #6D5B7E;
+    text-align: center;
+}
+.userbtn {
+    background-color: #000;
+	text-decoration: none;
+	padding: 8px 24px;
+	color: #fff;
+	margin-top: 10px;
+    border-radius: 8px;
+}
+.btn-position {
+    margin-top: 3em;
+    margin-left: 4em; 
+}
+.userbtn:hover {
+    background-color: #fff;
+    color: #6D5B7E;
+    border: 2px solid #6D5B7E;
+    text-align: center;
+}
+h1 {
+    margin-top: 2em; 
+    margin-left: 2em; 
+    font-family: fantasy;
+}
+h2 {
+    margin-top: .2em; 
+    margin-left: .8em;
+}
+p {
+    text-align: center;
+    text-align: left;
+    margin-top: 2em;
+    margin-left: 80px;
+    margin-right: 25px;
+}
+
+.example2 .one, .example2 .two { 
+    padding: 50px 0px 0 300px;
+    z-index: auto;
+}
+.one {
+  position: absolute;
+  width:  900px;
+  height: 500px;
+}
+.two{
+  position: absolute;
+  width:  900px;
+  height: 550px;
+}
+.one:before, .two:before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+}
+.one {
+    margin: 190px -90px -90px 0px;
+}
+.two {
+    margin: 50px -90px -90px 210px;
+}
+
+/* For Example 2 */
+.select-area{
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+}
+.select-area .select-bg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.select-area:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    box-shadow: 0 0 30px #808080;
+}
+.example2 .one {
+    /* background: #000; */
+    background-image: url("../images/black-white.jpg");
+}
+.example2 .two {
+    background: #37c991;
+}
