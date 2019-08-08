@@ -1,7 +1,8 @@
 const nav = document.getElementById('app-nav');
 nav.classList = 'navbar navbar-expand-md';
 nav.innerHTML = `
-<span class="navbar-brand" href="#">&Phi;P&Psi;</span>
+<span href="#"><img class="img-responsive"       
+src="./images/ppp.png"></span>
 <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item ">

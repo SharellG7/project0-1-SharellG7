@@ -2,6 +2,11 @@
     background-color: #000;
     color: #fff;
     width: 100%;
+
+}
+#app-nav .img-responsive {
+    height: 110px;
+    width: 130px;
 }
 .nav-link {
     color: #fff;

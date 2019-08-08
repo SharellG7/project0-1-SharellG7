@@ -47,6 +47,7 @@ async function safeUpdateProfile(event) {
                 'content-type': 'application/json'
             }
         });
+        // creat a variable and disable the button 
         const successfulSubmit = document.getElementById('status-submit');
         successfulSubmit.innerHTML = `
         <div class="alert alert-success alert-dismissible fade show" role="alert">

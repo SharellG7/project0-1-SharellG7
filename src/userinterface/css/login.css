@@ -64,4 +64,7 @@ input:focus {
 .welcome-header h1 {
     font-size: 160px;
 }
+.welcome-header h4 {
+  font-family: fantasy;
+}
 
